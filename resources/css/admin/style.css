@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Menu Admin  */
+.menu-admin{
+    transition:ease-in 0s;
+}
+.menu-admin>div{
+    max-height: 58px;
+}
+.menu-admin.zoom-out {
+    width: 5rem;
+}
+.menu-admin a{
+    max-height: 41px;
+}
+.menu-admin.zoom-out span{
+    display: none;
+}
+.dark {
+    background-color: rgb(20 28 41) ;
+    color: #cbd5e0;
+}
+
