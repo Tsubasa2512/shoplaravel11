@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\NewsletterController;
 use App\Http\Controllers\Admin\GeneralInformationController;
 use App\Http\Controllers\Admin\UserManagementController;
+use App\Http\Middleware\admin\BreadcrumbsMiddleware;
 
 use App\Http\Controllers\Admin\CategoriesController;
 use app\Http\Middleware\CheckLoginAdmin;
@@ -19,13 +20,16 @@ Route::get('/', function () {
 
 //Admin Route
 Route::prefix('admin')
-    // ->middleware(CheckLoginAdmin::class)
+    ->middleware([BreadcrumbsMiddleware::class,
+    // CheckLoginAdmin::class
+    ])
     ->group(function () {
         Route::get('/', [DashboardController::class, 'index'])->name('admin.dashboard');
         Route::get('/article', [ArticleController::class, 'index'])->name('admin.article');
         Route::get('/article/add', [ArticleController::class, 'add'])->name('admin.article.add');
         Route::get('/categories', [CategoriesController::class,'index'])->name('admin.categories');
         Route::get('/categories/add', [CategoriesController::class,'add'])->name('admin.categories.add');
+        Route::post('/categories/add', [CategoriesController::class,'createCategory']);
         Route::get('/categories/edit', [CategoriesController::class,'edit'])->name('admin.edit');
         Route::get('/product', [ProductController::class, 'index'])->name('admin.product');
         Route::get('/gallery', [GalleryController::class, 'index'])->name('admin.gallery');

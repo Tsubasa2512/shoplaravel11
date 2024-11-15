@@ -2,10 +2,10 @@
 
 
 @section('content')
-    <div class="relative ">
-        <div class="absolute top-0 left-0  ">
+    <div class="container--admin">
+        <div class="button--add--admin ">
             <a href="{{ route('admin.article.add') }}" title="Create Article"
-                 class="flex place-items-center  p-2 font-semibold text-zinc-50 bg-green-500  rounded hover:shadow-lg hover:shadow-green-300 hover:scale-95">
+                 class="w-fit flex place-items-center py-1 px-2 font-semibold text-zinc-50 bg-green-500  rounded hover:shadow-lg hover:shadow-green-300 hover:scale-95">
                 <span>Create Article</span>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="size-6 inline ml-1">

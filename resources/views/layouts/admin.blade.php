@@ -12,7 +12,7 @@
     @vite('resources/js/admin/script.js')
 </head>
 
-<body class="bg-gray-100 font-serif leading-normal tracking-normal">
+<body class="bg-gray-100 font-serif leading-normal tracking-normal relative overflow-hidden">
     <div class="flex  md:flex-row">
         <!-- Sidebar -->
         <aside id="menu-admin"
@@ -119,7 +119,7 @@
             </nav>
             <nav class="text-center font-mono absolute bottom-0 w-full pb-4 text-slate-500">
                 <a href="https://github.com/Tsubasa2512" title="Portfolio" target="_blank"
-                    class="text-xs block mb-1.5">
+                    class="text-xs block mb-1.5 hover:scale-105 hover:text-sky-600">
                     <span>Made by dev: Tsu_961</span>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="size-6 inline">
@@ -128,7 +128,8 @@
                     </svg>
 
                 </a>
-                <a href="mailto:xuantao09601@gmail.com" title="Email Support" class="text-xs block">
+                <a href="mailto:xuantao09601@gmail.com" title="Email Support"
+                    class="text-xs block hover:scale-105 hover:text-sky-600">
                     <span>Email: xuantao090601@gmail.com</span>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="size-6 inline">
@@ -201,26 +202,53 @@
                     </div>
                 </nav>
             </aside>
-            <div id="show-content-admin" class="mt-4 bg-gray-100 flex-grow overflow-auto  rounded-3xl p-6 shadow-xl">
+            <div id="show-content-admin" class="mt-4 bg-gray-100 flex-grow overflow-auto  rounded-3xl p-6 shadow-xl ">
 
                 <nav class="flex nav-breadcrumb border-b border-t p-1 font-semibold mb-4" aria-label="Breadcrumb">
                     <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
-                        <li class="inline-flex items-center">
-                            <a href="{{ route('admin.dashboard')}}"
-                                class="inline-flex items-center   hover:text-sky-600 dark:text-gray-400 dark:hover:text-white">
-                                <svg class="size-4 me-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                    fill="currentColor" viewBox="0 0 20 20">
-                                    <path
-                                        d="m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z" />
-                                </svg>
-                                Home
-                            </a>
-                        </li>
+                        @foreach ($breadcrumbs as $breadcrumb)
+                            <li class="inline-flex items-center">
+                                @if ($loop->last && !$loop->first)
+                                    <span class="inline-flex items-center text-gray-500 dark:text-gray-400 ">
+                                        {{ $breadcrumb['label'] }}
 
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                            stroke-width="1.5" stroke="currentColor" class="size-5 ml-2 mb-1">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M11.42 15.17 17.25 21A2.652 2.652 0 0 0 21 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 1 1-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 0 0 4.486-6.336l-3.276 3.277a3.004 3.004 0 0 1-2.25-2.25l3.276-3.276a4.5 4.5 0 0 0-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437 1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008Z" />
+                                        </svg>
+
+                                    </span>
+                                @else
+                                    <a href="{{ $breadcrumb['url'] }}"
+                                        class="inline-flex items-center hover:text-sky-600 dark:text-gray-400 dark:hover:text-white">
+                                        @if ($loop->first)
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                                fill="currentColor" class="size-5 mr-1 mb-1">
+                                                <path
+                                                    d="M11.47 3.841a.75.75 0 0 1 1.06 0l8.69 8.69a.75.75 0 1 0 1.06-1.061l-8.689-8.69a2.25 2.25 0 0 0-3.182 0l-8.69 8.69a.75.75 0 1 0 1.061 1.06l8.69-8.689Z" />
+                                                <path
+                                                    d="m12 5.432 8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 0 1-.75-.75v-4.5a.75.75 0 0 0-.75-.75h-3a.75.75 0 0 0-.75.75V21a.75.75 0 0 1-.75.75H5.625a1.875 1.875 0 0 1-1.875-1.875v-6.198a2.29 2.29 0 0 0 .091-.086L12 5.432Z" />
+                                            </svg>
+                                        @endif
+                                        {{ $breadcrumb['label'] }}
+                                    </a>
+                                    @if (!$loop->last)
+                                        <span class="mx-2">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                                class="size-6">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="m5.25 4.5 7.5 7.5-7.5 7.5m6-15 7.5 7.5-7.5 7.5" />
+                                            </svg>
+                                        </span>
+                                    @endif
+                                @endif
+                            </li>
+                        @endforeach
                     </ol>
                 </nav>
-
-
+                {{-- Content Main Admin  --}}
                 @yield('content')
             </div>
         </main>
