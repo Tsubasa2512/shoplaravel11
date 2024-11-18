@@ -20,6 +20,7 @@ return new class extends Migration
             $table->foreignId('type_id')->constrained('category_types')->onDelete('cascade');
             $table->boolean('show')->default(true);
             $table->boolean('featured')->default(false);
+            $table->integer('index_menu')->default(1);
             $table->string('slug')->unique();
             $table->timestamps();
         });

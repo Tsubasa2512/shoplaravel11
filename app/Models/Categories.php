@@ -14,8 +14,15 @@ class Categories extends Model
         'name_vi',
         'description',
         'type_id',
+        'index_menu',
         'show',
         'featured',
         'slug'
     ];
+
+    //get Name Category Type  form Id_Type at Categories table
+    public function categoryType()
+    {
+        return $this->belongsTo(CategoryType::class, 'type_id');
+    }
 }

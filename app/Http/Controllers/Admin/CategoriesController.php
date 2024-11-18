@@ -13,12 +13,16 @@ class CategoriesController extends Controller
 {
     public function index()
     {
-        return view("admin.categories");
+        $categories = Categories::all();
+
+        return view("admin.categories",compact("categories"));
     }
     public function add()
     {
         $categoryTypes = CategoryType::all();
-        return view("admin.categories_add", compact("categoryTypes"));
+        $maxIndexMenu = Categories::max('index_menu');
+        $nextIndexMenu = $maxIndexMenu ? $maxIndexMenu + 1 : 1;
+        return view("admin.categories_add", compact(["categoryTypes", "nextIndexMenu"]));
     }
     public function edit()
     {
@@ -42,6 +46,7 @@ class CategoriesController extends Controller
                 'name_vi' => $data['name'],
                 'slug' => $slug,
                 'type_id' => $data['type_id'],
+                'index_menu' => $data['index_menu'] + 0,
                 'image' => $imagePath,
                 'show' => $data['show'] ?? 0,
                 'featured' => $data['featured'] ?? 0,

@@ -10,4 +10,5 @@ class CategoryType extends Model
     use HasFactory;
 
     protected $table = 'category_types';
+    protected $fillable = ['name'];
 }

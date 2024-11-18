@@ -31,6 +31,11 @@
                     @endforeach
                 </select>
             </div>
+            <div class="box--data-admin flex mb-4 text-lg  items-center">
+                <label class="w-40 font-semibold">Index Menu </label>
+                <input type="text" name="index_menu"  maxlength="5"  value="{{$nextIndexMenu }}"
+                    class="p-1 px-4 flex-1 shadow-lg rounded focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 ">
+            </div>
             <div class="box--data-admin flex mt-2 mb-4 text-lg  items-center">
                 <label class="w-40 font-semibold">Image</label>
                 <input type="file" name="image"
