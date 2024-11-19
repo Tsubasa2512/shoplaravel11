@@ -6,15 +6,20 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         // Bảng roles
         Schema::create('roles', function (Blueprint $table) {
             $table->id();
-            $table->string('name');  // admin, cộng tác viên, khách hàng, người viết content
+            $table->string('name'); //  admin, cộng tác viên
+            $table->timestamps();
+        });
+
+        // Bảng core_user (các quyền trong từng role)
+        Schema::create('core_user', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('role_id')->constrained('roles')->onDelete('cascade'); // Liên kết với roles
+            $table->string('permission'); // Quyền mà role có
             $table->timestamps();
         });
 
@@ -26,44 +31,36 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->foreignId('role_id')->constrained('roles')->onDelete('cascade'); // Liên kết với bảng roles
+            $table->boolean('active')->default(true);
+            $table->foreignId('role_id')->constrained('roles')->onDelete('cascade'); // Liên kết với roles
             $table->rememberToken();
             $table->timestamps();
         });
 
-        // Bảng core_user
-        Schema::create('core_user', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade'); // Liên kết với bảng users
-            $table->string('permission'); // Quyền mà người dùng có
-            $table->timestamps();
-        });
-
+        // Bảng password_reset_tokens
         Schema::create('password_reset_tokens', function (Blueprint $table) {
             $table->string('email')->primary();
             $table->string('token');
             $table->timestamp('created_at')->nullable();
         });
 
+        // Bảng sessions
         Schema::create('sessions', function (Blueprint $table) {
             $table->string('id')->primary();
-            $table->foreignId('user_id')->nullable()->index();
+            $table->foreignId('user_id')->nullable()->constrained('users');
             $table->string('ip_address', 45)->nullable();
             $table->text('user_agent')->nullable();
             $table->longText('payload');
             $table->integer('last_activity')->index();
         });
-
-
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
-        Schema::dropIfExists('users');
-        Schema::dropIfExists('password_reset_tokens');
         Schema::dropIfExists('sessions');
+        Schema::dropIfExists('password_reset_tokens');
+        Schema::dropIfExists('users');
+        Schema::dropIfExists('core_user');
+        Schema::dropIfExists('roles');
     }
 };

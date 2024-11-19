@@ -1,10 +1,10 @@
 @extends('layouts.admin')
 
 @section('content')
-    @if (session('success'))
+    @if (session('success') || session('error'))
         <div class="alert--admin alert-success">
-            <label>{{ session('success') }}</label>
-            {{ session()->forget('success') }}
+            <label>{{ session('success') . session('error') }}</label>
+            {{ session()->forget('success') . session()->forget('error') }}
         </div>
     @endif
 
@@ -45,7 +45,7 @@
                 </thead>
                 <tbody>
                     @foreach ($categories as $item)
-                      @include('admin.categories.row')
+                        @include('admin.row.categories')
                     @endforeach
                 </tbody>
             </table>
