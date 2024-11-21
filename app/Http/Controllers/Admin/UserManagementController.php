@@ -50,7 +50,6 @@ class UserManagementController extends Controller
             "role_id" => "required|exists:roles,id",
 
         ]);
-        $validate["password"] =  Hash::make($validate["password"]);
         $user = $this->userService->create([
             "name" => $validate["name"],
             "email" => $validate["email"],
@@ -68,7 +67,7 @@ class UserManagementController extends Controller
     public function update(Request $request, $id)
     {
         $request->merge([
-            'active' => $request->has('active') ? 1 : 0  
+            'active' => $request->has('active') ? 1 : 0
         ]);
         $validate = $request->validate([
             "name" => "required|string|max:255",

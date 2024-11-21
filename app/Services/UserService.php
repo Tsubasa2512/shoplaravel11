@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Repositories\UserRepository;
 use App\Services\BaseServiceInterface;
 
+use Illuminate\Support\Facades\Hash;
 
 class UserService implements BaseServiceInterface
 {
@@ -23,12 +24,18 @@ class UserService implements BaseServiceInterface
     }
     public function create(array $data)
     {
+        $data['password'] = Hash::make($data['password']);
         return $this->userRepository->create($data);
     }
-    public function update($id, array $data)
+    public function update($id, array $data, $request = null)
     {
         $user = $this->userRepository->findById($id);
         if ($user) {
+            if (isset($data['password']) && !empty($data['password'])) {
+                $data['password'] = Hash::make($data['password']);
+            } else {
+                unset($data['password']);
+            }
             return $user->update($data);
         }
         return;
