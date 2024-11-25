@@ -5,7 +5,6 @@ namespace App\Repositories;
 use App\Models\Categories;
 use App\Models\CategoryType;
 use App\Repositories\BaseRepositoryInterface;
-use App\Helpers\UploadHelper;
 
 class CategoryRepository implements BaseRepositoryInterface
 {
@@ -17,7 +16,8 @@ class CategoryRepository implements BaseRepositoryInterface
 
     public function all()
     {
-        return $this->category->all();
+        // return $this->category->all();
+        return $this->category->orderBy("index_menu", "asc")->get();
     }
     public function findById($id)
     {
@@ -52,10 +52,5 @@ class CategoryRepository implements BaseRepositoryInterface
     public function getMaxIndexMenu()
     {
         return Categories::max("index_menu");
-    }
-
-    public function uploadImage($file, $slug)
-    {
-        return UploadHelper::upload($file, 'uploads/categories', $slug);
     }
 }

@@ -4,6 +4,8 @@ namespace App\Services;
 
 use App\Repositories\CategoryRepository;
 use App\Services\BaseServiceInterface;
+use App\Helpers\SlugHelper;
+use App\Helpers\UploadHelper;
 
 class CategoryService implements BaseServiceInterface
 {
@@ -21,9 +23,22 @@ class CategoryService implements BaseServiceInterface
     {
         return $this->categoryRepository->findById($id);
     }
-
-    public function create(array $data)
+    public function uploadImage($file, $slug)
     {
+        return UploadHelper::upload($file, 'uploads/categories', $slug);
+    }
+    public function create(array $data, $request = null)
+    {
+        $data['slug'] = $data['slug'] ?? SlugHelper::generateSlug($data['name'], 'categories');
+
+        if ($request && $request->hasFile('image')) {
+            $data['image'] = $this->uploadImage($request->file('image'), $data['slug']);
+        }
+        $data["name_en"] = $data["name"];
+        $data["name_vi"] = $data["name"];
+        $data['show'] = $data['show'] ?? 0;
+        $data['featured'] = $data['featured'] ?? 0;
+        $data['index_menu'] = $data['index_menu'] ?? 0;
         return $this->categoryRepository->create($data);
     }
     public function update($id, array $data, $request = null)
@@ -36,8 +51,8 @@ class CategoryService implements BaseServiceInterface
             $category->type_id = $data["type_id"];
             $category->index_menu = $data["index_menu"];
             $category->description = $data["description"];
-            $category->show = isset($data["show"]) ? 1 : 0;
-            $category->featured = isset($data["featured"]) ? 1 : 0;
+            $category->show = $data["show"];
+            $category->featured = $data["featured"];
 
             if ($request->hasFile("image") || (isset($data['no_image']) && $data['no_image'] == 'on')) {
                 if ($category->image) {
@@ -48,13 +63,11 @@ class CategoryService implements BaseServiceInterface
                     $category->image = null;
                 }
                 if ($request->hasFile('image')) {
-                    $imagePath = $this->categoryRepository->uploadImage($request->file('image'), $data['slug']);
-
+                    $imagePath = $this->uploadImage($request->file('image'), $data['slug']);
                     $category->image = $imagePath;
                 }
             }
-            // dd($category);
-            return $category->update($data);
+            return $category->save($data);
         }
         return;
     }

@@ -19,15 +19,11 @@ class CategoriesController extends Controller
     }
     public function index()
     {
-        // $categories = Categories::all();
         $categories = $this->categoryService->getAll();
         return view("admin.categories", compact("categories"));
     }
     public function add()
     {
-        // $categoryTypes = CategoryType::all();
-        // $maxIndexMenu = Categories::max('index_menu');
-        // $nextIndexMenu = $maxIndexMenu ? $maxIndexMenu + 1 : 1;
         $categoryTypes = $this->categoryService->getAllCategoryType();
         $nextIndexMenu = $this->categoryService->getCategoryAddIndexMenu();
         return view("admin.categories_add", compact(["categoryTypes", "nextIndexMenu"]));
@@ -35,7 +31,6 @@ class CategoriesController extends Controller
     public function edit(Request $request)
     {
         $id = $request->query("id");
-        // $category = Categories::find($id);
         $category = $this->categoryService->findById($id);
         $categoryTypes = $this->categoryService->getAllCategoryType();
         if (!$category) {
@@ -47,40 +42,7 @@ class CategoriesController extends Controller
     public function createCategory(Request $request)
     {
         $data = $request->all();
-        $slug = $data["slug"];
-        if (!$slug) {
-            $slug = SlugHelper::generateSlug($data["name"], 'categories');
-        }
-        $imagePath = null;
-        if ($request->hasFile('image')) {
-            $imagePath = UploadHelper::upload($request->file('image'), 'uploads/categories', $request->slug);
-        }
-        // $categories = Categories::create(
-        //     [
-        //         'name_en' => $data['name'],
-        //         'name_vi' => $data['name'],
-        //         'slug' => $slug,
-        //         'type_id' => $data['type_id'],
-        //         'index_menu' => $data['index_menu'] + 0,
-        //         'image' => $imagePath,
-        //         'show' => $data['show'] ?? 0,
-        //         'featured' => $data['featured'] ?? 0,
-        //         'description' => $data['description'],
-        //         'created_at' => $data['time'],
-        //     ]
-        // );
-        $category = $this->categoryService->create([
-            'name_en' => $data['name'],
-            'name_vi' => $data['name'],
-            'slug' => $slug,
-            'type_id' => $data['type_id'],
-            'index_menu' => $data['index_menu'] + 0,
-            'image' => $imagePath,
-            'show' => $data['show'] ?? 0,
-            'featured' => $data['featured'] ?? 0,
-            'description' => $data['description'],
-            'created_at' => $data['time'],
-        ]);
+        $category = $this->categoryService->create($data,$request);
         if (!$category) {
             return redirect()->route('admin.categories')->with('error', 'Category created failed !');
         }
@@ -89,22 +51,9 @@ class CategoriesController extends Controller
 
     public function update(Request $request, $id)
     {
-        // $category = Categories::findOrFail($id);
-        // $category = $this->categoryService
-
-        // $data = $request->all();
-        // $category->name_vi  = $data['name'];
-        // $category->name_en  = $data['name'];
-        // $category->slug     = $data['slug'];
-        // $category->type_id = $data['type_id'];
-        // $category->index_menu = $data['index_menu'];
-        // $category->description = $data['description'];
-        // $category->show = isset($data['show']) ? 1 : 0;;
-        // $category->featured = isset($data['featured']) ? 1 : 0;
-
         $request->merge([
-            'show' => $request->has('active') ? 1 : 0,
-            'featured' => $request->has('featured') ? 1 :0,
+            'show' => $request->has('show') ? 1 : 0,
+            'featured' => $request->has('featured') ? 1 : 0,
         ]);
 
         $validated = $request->validate([
