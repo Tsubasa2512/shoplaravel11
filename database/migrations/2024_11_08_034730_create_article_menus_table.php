@@ -17,9 +17,8 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->string('name_vi');
             $table->string('name_en');
-         
             $table->foreignId('category_id')->constrained('categories');
-
+            $table->integer('index_menu')->default(1);
             $table->string('slug')->unique();
             $table->boolean('show')->default(true);
             $table->boolean('featured')->default(false);

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ArticleController;
+use App\Http\Controllers\Admin\ArticleMenuController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\GalleryController;
 use App\Http\Controllers\Admin\OrderController;
@@ -26,7 +27,9 @@ Route::prefix('admin')
     ])
     ->group(function () {
         Route::get('/', [DashboardController::class, 'index'])->name('admin.dashboard');
-        Route::get('/article', [ArticleController::class, 'index'])->name('admin.article');
+        Route::get('/article-menu', [ArticleMenuController::class, 'index'])->name('admin.article-menu');
+        Route::get('/article-menu/menu-add', [ArticleMenuController::class, 'add'])->name('admin.article-menu.add');
+        Route::post('/article-menu/menu-add', [ArticleMenuController::class, 'createArticleMenu']);
         Route::get('/article/add', [ArticleController::class, 'add'])->name('admin.article.add');
         Route::get('/categories', [CategoriesController::class, 'index'])->name('admin.categories');
         Route::get('/categories/add', [CategoriesController::class, 'add'])->name('admin.categories.add');

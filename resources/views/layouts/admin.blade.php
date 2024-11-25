@@ -50,7 +50,7 @@
 
                     <span>Categories</span>
                 </a>
-                <a href="{{ route('admin.article') }}" title="Article"
+                <a href="{{ route('admin.article-menu') }}" title="Article"
                     class="block px-4 py-2  border-t  border-gray-300  hover:bg-zinc-500 hover:text-white  {{ request()->routeIs('admin.article*') ? 'bg-zinc-500 text-white ' : '' }} ">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="size-6 inline mr-1">
