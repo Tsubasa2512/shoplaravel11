@@ -34,8 +34,6 @@ class CategoryService implements BaseServiceInterface
         if ($request && $request->hasFile('image')) {
             $data['image'] = $this->uploadImage($request->file('image'), $data['slug']);
         }
-        $data["name_en"] = $data["name"];
-        $data["name_vi"] = $data["name"];
         $data['show'] = $data['show'] ?? 0;
         $data['featured'] = $data['featured'] ?? 0;
         $data['index_menu'] = $data['index_menu'] ?? 0;
@@ -43,10 +41,11 @@ class CategoryService implements BaseServiceInterface
     }
     public function update($id, array $data, $request = null)
     {
+        $data['show'] = $request->has('show') ? 1 : 0;
+        $data['featured'] = $request->has('featured') ? 1 : 0;
         $category = $this->categoryRepository->findById($id);
         if ($category) {
-            $category->name_en = $data["name"];
-            $category->name_vi = $data["name"];
+            $category->name = $data["name"];
             $category->slug = $data["slug"];
             $category->type_id = $data["type_id"];
             $category->index_menu = $data["index_menu"];
@@ -89,5 +88,20 @@ class CategoryService implements BaseServiceInterface
         $maxIndex = $this->categoryRepository->getMaxIndexMenu();
         $nextIndex = $maxIndex ? $maxIndex + 1 : 1;
         return $nextIndex;
+    }
+
+    public function validateData($id, $request)
+    {
+        return $request->validate([
+            "name" => "required|string|max:255",
+            "slug" => "required|string|max:255|unique:categories,slug," . $id,
+            "type_id" => "required|exists:category_types,id",
+            "index_menu" => "required|integer",
+            "description" => "nullable|string",
+            "show" => "nullable|boolean",
+            "featured" => "nullable|boolean",
+            "image" => "nullable|image",
+            "no_image" => "nullable|string",
+        ]);
     }
 }

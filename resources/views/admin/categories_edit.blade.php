@@ -8,7 +8,7 @@
         <input type="hidden" name="time" value="{{ time() }}">
         <div class="box--data-admin flex mb-4 text-lg  items-center">
             <label class="w-40 font-semibold">Name </label>
-            <input type="text" name="name" required maxlength="255" value="{{ $category->name_en }}"
+            <input type="text" name="name" required maxlength="255" value="{{ $category->name }}"
                 class="p-1 px-4 flex-1 shadow-lg rounded focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 ">
         </div>
         <div class="box--data-admin flex mb-4 text-lg  items-center">

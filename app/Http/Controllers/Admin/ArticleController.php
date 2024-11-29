@@ -15,7 +15,7 @@ class ArticleController extends Controller
     }
     public function index()
     {
-        return view("admin.article_menu");
+        return view("admin.article");
     }
     public function add()
     {

@@ -30,7 +30,11 @@ Route::prefix('admin')
         Route::get('/article-menu', [ArticleMenuController::class, 'index'])->name('admin.article-menu');
         Route::get('/article-menu/menu-add', [ArticleMenuController::class, 'add'])->name('admin.article-menu.add');
         Route::post('/article-menu/menu-add', [ArticleMenuController::class, 'createArticleMenu']);
-        Route::get('/article/add', [ArticleController::class, 'add'])->name('admin.article.add');
+        Route::get('/article-menu/menu-edit', [ArticleMenuController::class, 'edit'])->name('admin.article-menu.edit');
+        Route::post('/article-menu/menu-update/{id}', [ArticleMenuController::class, 'update'])->name('admin.article-menu.update');
+        Route::delete('/article-menu/menu-delete/{id}', [ArticleMenuController::class, 'delete'])->name('admin.article-menu.delete');
+        Route::get('/article-menu/article', [ArticleController::class, 'index'])->name('admin.article');
+        Route::get('/article-menu/article/add', [ArticleController::class, 'add'])->name('admin.article.add');
         Route::get('/categories', [CategoriesController::class, 'index'])->name('admin.categories');
         Route::get('/categories/add', [CategoriesController::class, 'add'])->name('admin.categories.add');
         Route::post('/categories/add', [CategoriesController::class, 'createCategory']);

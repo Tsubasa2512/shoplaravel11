@@ -18,8 +18,8 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->string('name');
             $table->foreignId('category_id')->constrained('categories');
-            $table->unsignedBigInteger('parent_id')->nullable()->default(null);
-            $table->foreign('parent_id')->references('id')->on('gallery_menus')->onDelete('cascade');             $table->string('slug')->unique();
+            $table->integer('parent')->default(0);
+            $table->string('slug')->unique();
             $table->boolean('show')->default(true);
             $table->boolean('featured')->default(false);
             $table->timestamps();

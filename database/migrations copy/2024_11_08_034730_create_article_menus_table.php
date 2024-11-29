@@ -11,15 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('gallery_menus', function (Blueprint $table) {
+        Schema::create('article_menus', function (Blueprint $table) {
             $table->id();
             $table->integer('index_menu')->default(1);
             $table->string('image')->nullable();
             $table->text('description')->nullable();
             $table->string('name');
             $table->foreignId('category_id')->constrained('categories');
-            $table->unsignedBigInteger('parent_id')->nullable()->default(null);
-            $table->foreign('parent_id')->references('id')->on('gallery_menus')->onDelete('cascade');             $table->string('slug')->unique();
+            $table->integer('parent')->default(0);
+            $table->string('slug')->unique();
             $table->boolean('show')->default(true);
             $table->boolean('featured')->default(false);
             $table->timestamps();
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('gallery_menus');
+        Schema::dropIfExists('article_menus');
     }
 };

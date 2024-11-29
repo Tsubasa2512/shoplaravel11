@@ -33,10 +33,11 @@
                         <th class="border  border-gray-300 p-2">
                             <input type="checkbox" name="checkAll" id="checkAll" class="size-5 block m-auto">
                         </th>
-                        <th class="border  border-gray-300 p-2 w-36">Name Category</th>
-                        <th class="border  border-gray-300 p-2">Name</th>
+                        <th class="border  border-gray-300 p-2 w-36">Index</th>
+                        <th class="border  border-gray-300 p-2" colspan="2">Name</th>
                         <th class="border  border-gray-300 p-2">Image</th>
-                        <th class="border  border-gray-300 p-2">Child List</th>
+                        <th class="border  border-gray-300 p-2">Category</th>
+                        <th class="border  border-gray-300 p-2">Parent</th>
                         <th class="border  border-gray-300 p-2">Status</th>
                         <th class="border  border-gray-300 p-2">Featured</th>
                         <th class="border  border-gray-300 p-2">Modified</th>
@@ -44,9 +45,14 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {{-- @foreach ($article as $item)
-                        @include('admin.row.article')
-                    @endforeach --}}
+                    @foreach ($articleMenu as $item)
+                        @include('admin.row.article_menu')
+                        {{-- --------------------- --}}
+                        @foreach ($item->children as $item)
+                            @include('admin.row.article_menu')
+                        @endforeach
+                        {{-- --------------------- --}}
+                    @endforeach
                 </tbody>
             </table>
             {{-- //Group button is at the bottom of the tables  --}}

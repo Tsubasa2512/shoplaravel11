@@ -2,12 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Helpers\SlugHelper;
 use App\Http\Controllers\Controller;
-use App\Models\Categories;
 use Illuminate\Http\Request;
-use App\Models\CategoryType;
-use App\Helpers\UploadHelper;
 use App\Services\CategoryService;
 
 class CategoriesController extends Controller
@@ -42,7 +38,7 @@ class CategoriesController extends Controller
     public function createCategory(Request $request)
     {
         $data = $request->all();
-        $category = $this->categoryService->create($data,$request);
+        $category = $this->categoryService->create($data, $request);
         if (!$category) {
             return redirect()->route('admin.categories')->with('error', 'Category created failed !');
         }
@@ -51,25 +47,9 @@ class CategoriesController extends Controller
 
     public function update(Request $request, $id)
     {
-        $request->merge([
-            'show' => $request->has('show') ? 1 : 0,
-            'featured' => $request->has('featured') ? 1 : 0,
-        ]);
-
-        $validated = $request->validate([
-            "name" => "required|string|max:255",
-            "slug" => "required|string|max:255|unique:categories,slug," . $id,
-            "type_id" => "required|exists:category_types,id",
-            "index_menu" => "required|integer",
-            "description" => "nullable|string",
-            "show" => "nullable|boolean",
-            "featured" => "nullable|boolean",
-            "image" => "nullable|image",
-            "no_image" => "nullable|string",
-        ]);
-
+        $data = $request->all();
+        $validated = $this->categoryService->validateData($id, $request);
         $updated = $this->categoryService->update($id, $validated, $request);
-
         if (!$updated) {
             return redirect()->route('admin.categories')->with('error', 'Category update failed!');
         }
@@ -81,7 +61,6 @@ class CategoriesController extends Controller
         if (!$category) {
             return redirect()->route('admin.categories')->with('error', 'Category not found');
         }
-
         return redirect()->route('admin.categories')->with('success', 'Category deleted successfully !');
     }
 }

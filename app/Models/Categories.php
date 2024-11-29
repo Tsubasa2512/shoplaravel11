@@ -10,8 +10,7 @@ class Categories extends Model
     use HasFactory;
     protected $fillable = [
         'image',
-        'name_en',
-        'name_vi',
+        'name',
         'description',
         'type_id',
         'index_menu',

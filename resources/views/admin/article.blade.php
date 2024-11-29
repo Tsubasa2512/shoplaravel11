@@ -44,9 +44,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($article as $item)
+                    {{-- @foreach ($article as $item)
                         @include('admin.row.article')
-                    @endforeach
+                    @endforeach --}}
                 </tbody>
             </table>
             {{-- //Group button is at the bottom of the tables  --}}

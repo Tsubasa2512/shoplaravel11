@@ -10,20 +10,21 @@ return new class extends Migration
      * Run the migrations.
      */
     public function up(): void
-    {     Schema::create('product_menus', function (Blueprint $table) {
-        $table->id();
-        $table->string('image')->nullable();
-        $table->text('description')->nullable();
-        $table->string('name_vi'); // Tên menu sản phẩm tiếng Việt
-        $table->string('name_en'); // Tên menu sản phẩm tiếng Anh
-
-        $table->foreignId('category_id')->constrained('categories');
-
-        $table->string('slug')->unique();
-        $table->boolean('show')->default(true);  // Trường hiển thị, mặc định là true (hiển thị)
-        $table->boolean('featured')->default(false);
-        $table->timestamps();
-    });
+    {
+        Schema::create('product_menus', function (Blueprint $table) {
+            $table->id();
+            $table->integer('index_menu')->default(1);
+            $table->string('image')->nullable();
+            $table->text('description')->nullable();
+            $table->string('name');
+            $table->foreignId('category_id')->constrained('categories');
+            $table->unsignedBigInteger('parent_id')->nullable()->default( null);
+            $table->foreign('parent_id')->references('id')->on('product_menus')->onDelete('cascade');
+            $table->string('slug')->unique();
+            $table->boolean('show')->default(true);
+            $table->boolean('featured')->default(false);
+            $table->timestamps();
+        });
     }
 
     /**

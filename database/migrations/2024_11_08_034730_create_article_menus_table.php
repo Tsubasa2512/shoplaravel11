@@ -13,12 +13,13 @@ return new class extends Migration
     {
         Schema::create('article_menus', function (Blueprint $table) {
             $table->id();
+            $table->integer('index_menu')->default(1);
             $table->string('image')->nullable();
             $table->text('description')->nullable();
-            $table->string('name_vi');
-            $table->string('name_en');
+            $table->string('name');
             $table->foreignId('category_id')->constrained('categories');
-            $table->integer('index_menu')->default(1);
+            $table->unsignedBigInteger('parent_id')->nullable()->default(null);;
+            $table->foreign('parent_id')->references('id')->on('article_menus')->onDelete('cascade');
             $table->string('slug')->unique();
             $table->boolean('show')->default(true);
             $table->boolean('featured')->default(false);

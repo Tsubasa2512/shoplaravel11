@@ -35,8 +35,7 @@ class ArticleMenuService implements BaseServiceInterface
         if ($request && $request->hasFile('image')) {
             $data['image'] = $this->uploadImage($request->file('image'), $data['slug']);
         }
-        $data["name_en"] = $data["name"];
-        $data["name_vi"] = $data["name"];
+        $data['parent_id'] = $data['parent_id'] == 0  ? null : $data['parent_id'];
         $data['show'] = $data['show'] ?? 0;
         $data['featured'] = $data['featured'] ?? 0;
         $data['index_menu'] = $data['index_menu'] ?? 0;
@@ -44,13 +43,21 @@ class ArticleMenuService implements BaseServiceInterface
     }
     public function update($id, array $data, $request = null)
     {
+
         $articleMenu = $this->articleMenuRepository->findById($id);
+        if (empty($data['parent_id'])) {
+            $data['parent_id'] = $request->parent_id;
+        }
+        $data['parent_id'] = $data['parent_id'] == 0  ? null : $data['parent_id'];
+        $data['show'] = $data['show'] ?? 0;
+        $data['featured'] = $data['featured'] ?? 0;
+        $data['index_menu'] = $data['index_menu'] ?? 0;
         if ($articleMenu) {
-            $articleMenu->name_en = $data["name"];
-            $articleMenu->name_vi = $data["name"];
+            $articleMenu->name = $data["name"];
             $articleMenu->slug = $data["slug"];
-            $articleMenu->type_id = $data["type_id"];
+            $articleMenu->category_id = $data["category_id"];
             $articleMenu->index_menu = $data["index_menu"];
+            $articleMenu->parent_id = $data["parent_id"];
             $articleMenu->description = $data["description"];
             $articleMenu->show = $data["show"];
             $articleMenu->featured = $data["featured"];
@@ -75,11 +82,12 @@ class ArticleMenuService implements BaseServiceInterface
 
     public function delete($id)
     {
-        $articleMenu = $this->articleMenuRepository->findById($id);
-        if ($articleMenu) {
-            return $articleMenu->delete();
-        }
-        return;
+        return $this->articleMenuRepository->delete($id);
+        // $articleMenu = $this->articleMenuRepository->delete($id);
+        // if ($articleMenu) {
+        //     return $articleMenu->delete();
+        // }
+        // return;
     }
 
     public function getCategory()
@@ -92,5 +100,25 @@ class ArticleMenuService implements BaseServiceInterface
         $maxIndex = $this->articleMenuRepository->getMaxIndexMenu();
         $nextIndex = $maxIndex ? $maxIndex + 1 : 1;
         return $nextIndex;
+    }
+    public function getHierarchicalMenus()
+    {
+        return $this->articleMenuRepository->getHierarchicalMenus();
+    }
+
+    public function validateData($id, $request)
+    {
+        return $request->validate([
+            "name" => "required|string|max:255",
+            "slug" => "required|string|max:255|unique:categories,slug," . $id,
+            "category_id" => "required|exists:categories,id",
+            "parent_id' => 'nullable|integer|min:0|exists:article_menus,id|not_in:0",
+            "index_menu" => "required|integer",
+            "description" => "nullable|string",
+            "show" => "nullable|boolean",
+            "featured" => "nullable|boolean",
+            "image" => "nullable|image",
+            "no_image" => "nullable|string",
+        ]);
     }
 }

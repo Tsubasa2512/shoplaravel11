@@ -48,9 +48,12 @@ class ArticleMenuRepository implements BaseRepositoryInterface
     {
         return ArticleMenu::max("index_menu");
     }
-
+    public function getHierarchicalMenus()
+    {
+        return ArticleMenu::whereNull('parent_id')->with('children')->orderBy('index_menu')->get();
+    }
     public function getCategory()
     {
-        return Categories::where("type_id",1)->get();
+        return Categories::where("type_id", 1)->get();
     }
 }
