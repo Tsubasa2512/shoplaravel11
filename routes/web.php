@@ -13,11 +13,10 @@ use App\Http\Controllers\Admin\UserManagementController;
 use App\Http\Middleware\admin\BreadcrumbsMiddleware;
 
 use App\Http\Controllers\Admin\CategoriesController;
+use App\Http\Controllers\Client\HomeController;
 use app\Http\Middleware\CheckLoginAdmin;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [HomeController::class,'index'])->name('client.home');
 
 //Admin Route
 Route::prefix('admin')
