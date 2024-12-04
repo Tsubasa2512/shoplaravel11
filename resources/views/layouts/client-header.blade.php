@@ -1,21 +1,55 @@
-<header>
+<header class="z-20 relative bg-gray-100">
     <div class="header-top shadow-xl  ">
         <div class="container mx-auto p-2 flex items-center">
             <div class="left-top-header w-40">
-                <h1><a href="#" title="Trang chủ"> <img src="/images/logo.png" alt=""></a></h1>
+                <h1><a href="#" title="Trang chủ"><img src="/images/logo.png" alt="demo"></a></h1>
             </div>
             <div class="center-top-header flex-1 text-center">
-                <h2> Hotline (+84) 033 55 04 779 </h2>
+                <h2><a href="tel:(+84) 033 55 04 779" title="demo">
+                        <img class="m-auto hover:scale-90" src="/images/hotline.svg" alt="demo">
+                    </a>
+                </h2>
             </div>
-            <div class="right-top-header flex-1  ">
-                <ul class="flex flex-wrap w-fit ml-auto ">
-                    <li class="w-1/3 order-1"><x-icons.edit class="inline-block w-3 h-3 mx-2" />Tour trọn gói</li>
-                    <li class="w-1/3 order-2"><x-icons.edit class="inline-block w-3 h-3 mx-2" />Tour trong ngày</li>
-                    <li class="w-1/3 order-3"><x-icons.edit class="inline-block w-3 h-3 mx-2" />Tour building</li>
-                    <li class="w-1/3 order-4"><x-icons.edit class="inline-block w-3 h-3 mx-2" />Tour du thuyền</li>
-                    <li class="w-1/3 order-5"><x-icons.edit class="inline-block w-3 h-3 mx-2" />Thuê xe du lịch</li>
-                    <li class="w-1/3 order-6"><x-icons.edit class="inline-block w-3 h-3 mx-2" />Phòng khách sạn</li>
+            <div class="right-top-header flex-1">
+                <ul class="flex flex-wrap w-fit ml-auto font-medium ">
+                    <li class="w-1/3 group order-1 p-1">
+                        <a href="#" class="group-hover:text-red-700" title="demo">
+                            <x-icons.travel-map-location
+                                class="inline-block w-8 h-8 mx-1 group-hover:scale-125" />Tour trọn gói
+                        </a>
+                    </li>
+                    <li class="w-1/3 group order-2 p-1">
+                        <a href="#" class="group-hover:text-red-700" title="demo">
+                            <x-icons.day-tour class="inline-block w-8 h-8 mx-1 group-hover:scale-125" />Tour
+                            trong ngày
+                        </a>
+                    </li>
+                    <li class="w-1/3 group order-5 p-1">
+                        <a href="#" class="group-hover:text-red-700" title="demo">
+                            <x-icons.building-tour class="inline-block w-8 h-8 mx-1 group-hover:scale-125" />Tour
+                            building
+                        </a>
+                    </li>
+                    <li class="w-1/3 group order-4 p-1">
+                        <a href="#" class="group-hover:text-red-700" title="demo">
+                            <x-icons.boat-tour class="inline-block w-8 h-8 mx-1 group-hover:scale-125" />Tour du
+                            thuyền
+                        </a>
+                    </li>
+                    <li class="w-1/3 group order-3 p-1">
+                        <a href="#" class="group-hover:text-red-700" title="demo">
+                            <x-icons.car class="inline-block w-8 h-8 mx-1 group-hover:scale-125" />Thuê xe du
+                            lịch
+                        </a>
+                    </li>
+                    <li class="w-1/3 group order-6 p-1">
+                        <a href="#" class="group-hover:text-red-700" title="demo">
+                            <x-icons.hotel class="inline-block w-8 h-8 mx-1 group-hover:scale-125" />Phòng khách
+                            sạn
+                        </a>
+                    </li>
                 </ul>
+
             </div>
             <div class="wish-list">
                 <svg class="w-10 h-10 text-gray-800 dark:text-white" aria-hidden="true"
@@ -26,5 +60,32 @@
             </div>
         </div>
     </div>
-
+    {{-- --------------------------------------- --}}
+    <div class="header-bottom bg-zinc-900">
+        <div class="container mx-auto">
+            <ul class="flex items-center category-menu text-center text-white font-medium">
+                <li class="flex-1 i-category-menu p-1 uppercase hover:bg-red-700 ">
+                    <a class="block p-2" href="#" title="demo"><span class="p-1 px-2">Trang Chủ</span></a>
+                </li>
+                <li class="flex-1 i-category-menu p-1 uppercase hover:bg-red-700">
+                    <a class="block p-2" href="#" title="demo"><span class="p-1 px-2">Tour Nội Địa</span></a>
+                </li>
+                <li class="flex-1 i-category-menu p-1 uppercase hover:bg-red-700">
+                    <a class="block p-2" href="#" title="demo"><span class="p-1 px-2">Tour Inbound</span></a>
+                </li>
+                <li class="flex-1 i-category-menu p-1 uppercase hover:bg-red-700">
+                    <a class="block p-2" href="#" title="demo"><span class="p-1 px-2">Tour Thailand</span></a>
+                </li>
+                <li class="flex-1 i-category-menu p-1 uppercase hover:bg-red-700">
+                    <a class="block p-2" href="#" title="demo"><span class="p-1 px-2">Tour Hongkong</span></a>
+                </li>
+                <li class="flex-1 i-category-menu p-1 uppercase hover:bg-red-700">
+                    <a class="block p-2" href="#" title="demo"><span class="p-1 px-2">Tour China</span></a>
+                </li>
+                <li class="flex-1 i-category-menu p-1 uppercase hover:bg-red-700">
+                    <a class="block p-2" href="#" title="demo"><span class="p-1 px-2">Về Chúng Tôi</span></a>
+                </li>
+            </ul>
+        </div>
+    </div>
 </header>
