@@ -11,11 +11,29 @@
 
 <body class="bg-gray-100 font-sans  leading-normal tracking-normal relative overflow-x-hidden ">
     @include('layouts.client-header')
-    @include('layouts.client-slider')
-    <div id="show-content-client">
+    @yield('slider')
+    <main id="show-content-client">
         @yield('content')
-    </div>
+    </main>
     @include('layouts.client-footer')
 </body>
-</html>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const swiper = new Swiper('.swiper', {
+            loop: true,
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+        });
 
+        console.log('Swiper initialized:', swiper);
+    });
+</script>
+
+</html>

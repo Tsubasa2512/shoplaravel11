@@ -6,7 +6,7 @@
             </div>
             <div class="center-top-header flex-1 text-center">
                 <h2><a href="tel:(+84) 033 55 04 779" title="demo">
-                        <img class="m-auto hover:scale-90" src="/images/hotline.svg" alt="demo">
+                        <img class="m-auto scale-90  hover:scale-100" src="/images/hotline.svg" alt="demo">
                     </a>
                 </h2>
             </div>
@@ -63,7 +63,7 @@
     {{-- --------------------------------------- --}}
     <div class="header-bottom bg-zinc-900">
         <div class="container mx-auto">
-            <ul class="flex items-center category-menu text-center text-white font-medium">
+            <ul class="flex flex-wrap items-center category-menu text-center text-white font-medium">
                 <li class="flex-1 i-category-menu p-1 uppercase hover:bg-red-700 ">
                     <a class="block p-2" href="#" title="demo"><span class="p-1 px-2">Trang Chủ</span></a>
                 </li>
