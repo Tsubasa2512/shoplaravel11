@@ -26,13 +26,7 @@
                 delay: 3000,
                 disableOnInteraction: false,
             },
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
         });
-
-        console.log('Swiper initialized:', swiper);
     });
 </script>
 
