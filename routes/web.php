@@ -17,6 +17,7 @@ use App\Http\Controllers\Client\HomeController;
 use app\Http\Middleware\CheckLoginAdmin;
 
 Route::get('/', [HomeController::class,'index'])->name('client.home');
+Route::get('/search', [HomeController::class,'search'])->name('client.search');
 
 //Admin Route
 Route::prefix('admin')
