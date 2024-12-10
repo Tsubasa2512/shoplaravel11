@@ -1,5 +1,5 @@
 <header class="z-20 relative bg-gray-100">
-    <div class="header-top shadow-xl  ">
+    <div class="header-top shadow-xl ">
         <div class="container mx-auto p-2 flex items-center">
             <div class="left-top-header w-40">
                 <h1><a href="#" title="Trang chủ"><img src="/images/logo.png" alt="demo"></a></h1>
