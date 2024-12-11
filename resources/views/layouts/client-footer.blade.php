@@ -32,16 +32,19 @@
                         <div class="content--footer pl-3">
                             <a href="#" title="demo"
                                 class="block mb-2 hover:text-red-500"><x-icons.chevron-double-right
+                                    class="inline w-3.5 h-3.5" />Quy định chung</a>
+                            <a href="#" title="demo"
+                                class="block mb-2 hover:text-red-500"><x-icons.chevron-double-right
                                     class="inline w-3.5 h-3.5" />Hướng dẫn đặt tour</a>
                             <a href="#" title="demo"
                                 class="block mb-2 hover:text-red-500"><x-icons.chevron-double-right
                                     class="inline w-3.5 h-3.5" />Hướng dẫn thanh toán</a>
                             <a href="#" title="demo"
                                 class="block mb-2 hover:text-red-500"><x-icons.chevron-double-right
-                                    class="inline w-3.5 h-3.5" />Quy định chung</a>
+                                    class="inline w-3.5 h-3.5" />Chăm sóc khách hàng</a>
                             <a href="#" title="demo"
                                 class="block mb-2 hover:text-red-500"><x-icons.chevron-double-right
-                                    class="inline w-3.5 h-3.5" />Chăm sóc khách hàng</a>
+                                    class="inline w-3.5 h-3.5" />Tổ chức sự kiện</a>
                         </div>
                     </div>
                     <div class="about-us w-1/2 sm:pl-4">
@@ -55,16 +58,17 @@
                                     class="inline w-3.5 h-3.5" />Tuyển dụng</a>
                             <a href="#" title="demo"
                                 class="block mb-2 hover:text-red-500"><x-icons.chevron-double-right
-                                    class="inline w-3.5 h-3.5" />Tổ chức sự kiện</a>
-                            <a href="#" title="demo"
-                                class="block mb-2 hover:text-red-500"><x-icons.chevron-double-right
                                     class="inline w-3.5 h-3.5" />Trở thành đối tác</a>
                         </div>
                         <div class="social mt-4 flex gap-2">
-                            <a href="#" title="demo" target="_blank" class="hover:scale-125"><x-icons.facebook /></a>
-                            <a href="#" title="demo" target="_blank" class="hover:scale-125"><x-icons.instagram/></a>
-                            <a href="#" title="demo" target="_blank" class="hover:scale-125"><x-icons.zalo/></a>
-                            <a href="#" title="demo" target="_blank" class="hover:scale-125"><x-icons.wechat/></a>
+                            <a href="#" title="demo" target="_blank"
+                                class="hover:scale-125"><x-icons.facebook /></a>
+                            <a href="#" title="demo" target="_blank"
+                                class="hover:scale-125"><x-icons.instagram /></a>
+                            <a href="#" title="demo" target="_blank"
+                                class="hover:scale-125"><x-icons.zalo /></a>
+                            <a href="#" title="demo" target="_blank"
+                                class="hover:scale-125"><x-icons.wechat /></a>
                         </div>
                     </div>
 
@@ -80,7 +84,7 @@
                 <span class="block my-1 text-xs">----------------------------------------</span>
                 <p class="text-sm mb-3">Copyright © 2024 - CÔNG TY TNHH DU LỊCH OM VIỆT NAM - Đăng ký kinh doanh số
                     0315565613 - do Sở Kế
-                    hoạch và Đầu tư thành phố Hồ Chí Minh cấp lần đầu ngày 14 tháng 03 năm 2019</p>
+                    hoạch và Đầu tư thành phố Hồ Chí Minh cấp lần đầu ngày 14 tháng 03 năm 2019.</p>
             </div>
         </div>
 

@@ -1,4 +1,4 @@
-<svg id='Style_Three_Pin_Bowling_32' {{ $attributes->merge(['class' => 'w-6 h-6']) }} viewBox='0 0 32 32'
+<svg id='Style_Three_Pin_Bowling_32' class="{{ $attributes['class'] ?? 'w-6 h-6' }}"viewBox='0 0 32 32'
     xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'>
     <rect width='32' height='32' stroke='none' fill='#000000' opacity='0' />
     <g transform="matrix(1.17 0 0 1.17 16 16)">
