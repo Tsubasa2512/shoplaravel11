@@ -30,7 +30,7 @@ class ArticleMenuService implements BaseServiceInterface
 
     public function create(array $data, $request = null)
     {
-        $data['slug'] = $data['slug'] ?? SlugHelper::generateSlug($data['name'], 'categories');
+        $data['slug'] = $data['slug'] ?? SlugHelper::generateSlug($data['name'], 'article_menus');
 
         if ($request && $request->hasFile('image')) {
             $data['image'] = $this->uploadImage($request->file('image'), $data['slug']);

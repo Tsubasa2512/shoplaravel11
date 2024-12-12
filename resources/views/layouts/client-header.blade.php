@@ -65,10 +65,10 @@
         <div class="container mx-auto">
             <ul class="flex flex-wrap items-center category-menu text-center text-white font-medium">
                 <li class="flex-1 i-category-menu p-1 uppercase hover:bg-red-700 ">
-                    <a class="block p-2" href="#" title="demo"><span class="p-1 px-2">Trang Chủ</span></a>
+                    <a class="block p-2" href="{{route('client.home')}}" title="demo"><span class="p-1 px-2">Trang Chủ</span></a>
                 </li>
                 <li class="flex-1 i-category-menu p-1 uppercase hover:bg-red-700">
-                    <a class="block p-2" href="#" title="demo"><span class="p-1 px-2">Tour Nội Địa</span></a>
+                    <a class="block p-2" href="{{route('client.product')}}" title="demo"><span class="p-1 px-2">Tour Nội Địa</span></a>
                 </li>
                 <li class="flex-1 i-category-menu p-1 uppercase hover:bg-red-700">
                     <a class="block p-2" href="#" title="demo"><span class="p-1 px-2">Tour Inbound</span></a>

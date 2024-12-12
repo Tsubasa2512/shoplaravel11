@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ArticleMenu extends Model
+class ProductMenu extends Model
 {
     use HasFactory;
     protected $fillable = [
@@ -17,19 +17,19 @@ class ArticleMenu extends Model
         'parent_id',
         'show',
         'featured',
-        'slug'
+        'slug',
     ];
+
     public function category()
     {
         return $this->belongsTo(Categories::class, 'category_id');
     }
     public function parent()
     {
-        return $this->belongsTo(ArticleMenu::class, foreignKey: 'parent_id');
+        return $this->belongsTo(ProductMenu::class, 'parent_id');
     }
-
     public function children()
     {
-        return $this->hasMany(ArticleMenu::class, 'parent_id');
+        return $this->hasMany(ProductMenu::class, 'parent_id');
     }
 }

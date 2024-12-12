@@ -59,7 +59,7 @@
                     </svg>
                     <span>Article</span>
                 </a>
-                <a href="{{ route('admin.product') }}" title="Product"
+                <a href="{{ route('admin.product-menu') }}" title="Product"
                     class="block px-4 py-2  border-t  border-gray-300  hover:bg-zinc-500 hover:text-white {{ request()->routeIs('admin.product*') ? 'bg-zinc-500 text-white ' : '' }}">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="size-6 inline mr-1">
@@ -211,7 +211,6 @@
                                 @if ($loop->last && !$loop->first)
                                     <span class="inline-flex items-center text-gray-500 dark:text-gray-400 ">
                                         {{ $breadcrumb['label'] }}
-
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                             stroke-width="1.5" stroke="currentColor" class="size-5 ml-2 mb-1">
                                             <path stroke-linecap="round" stroke-linejoin="round"

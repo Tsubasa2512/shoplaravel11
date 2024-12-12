@@ -18,10 +18,11 @@ class BreadcrumbsMiddleware
         $segments = $request->segments();
         $breadcrumbs = [];
         $url = '';
-
         foreach ($segments as $segment) {
             $url .= '/' . $segment;
-            if($segment == 'admin'){ $segment ='Home';}
+            if ($segment == 'admin') {
+                $segment = 'Dashboard';
+            }
             $breadcrumbs[] = [
                 'label' => ucfirst($segment),
                 'url' => url($url),
