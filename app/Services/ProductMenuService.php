@@ -45,7 +45,7 @@ class ProductMenuService implements BaseServiceInterface
     }
     public function update($id, array $data, $request = null)
     {
-        $productMenu = $this->productMenuRepository->findById($id);
+
 
         if (empty($data['parent_id'])) {
             $data['parent_id'] = $request->parent_id;
@@ -54,16 +54,18 @@ class ProductMenuService implements BaseServiceInterface
         $data['show'] = $data['show'] ?? 0;
         $data['featured'] = $data['featured'] ?? 0;
         $data['index_menu'] = $data['index_menu'] ?? 0;
-        if ($request->hasFile("image") || (isset($data['no_image']) && $data['no_image'] == 'on')) {
-            $oldImagePath = public_path('storage/' . $productMenu->image);
-            if (file_exists($oldImagePath)) {
-                unlink($oldImagePath);
+        if ($request && $request->hasFile("image")) {
+            if (isset($data['image']) && $data['image']) {
+                if (!empty($request['image_old'])) {
+                    $oldImagePath = public_path('storage/' .   $request['image_old']);
+                    if (file_exists($oldImagePath)) {
+                        unlink($oldImagePath);
+                    }
+                }
             }
+            $data['image'] = $this->uploadImage($request->file('image'), $data['slug']);
         }
-        if ($request->hasFile('image')) {
-            $imagePath = $this->uploadImage($request->file('image'), $data['slug']);
-            $data['image'] = $imagePath;
-        }
+
         return $this->productMenuRepository->update($id, $data);
     }
 

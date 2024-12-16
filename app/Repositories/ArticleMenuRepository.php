@@ -28,9 +28,9 @@ class ArticleMenuRepository implements BaseRepositoryInterface
     }
     public function update($id, array $data)
     {
-        $artcleMenu = $this->articleMenu->findById($id); {
-            if ($artcleMenu) {
-                return $artcleMenu->update($data);
+        $articleMenu = $this->findById($id); {
+            if ($articleMenu) {
+                return $articleMenu->update($data);
             }
             return;
         }
@@ -38,7 +38,7 @@ class ArticleMenuRepository implements BaseRepositoryInterface
 
     public function delete($id)
     {
-        $artcleMenu = $this->articleMenu->findById($id);
+        $artcleMenu = $this->findById($id);
         if ($artcleMenu) {
             return $artcleMenu->delete();
         }

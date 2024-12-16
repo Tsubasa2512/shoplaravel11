@@ -21,6 +21,16 @@ return new class extends Migration
             $table->boolean('show')->default(true);
             $table->boolean('featured')->default(false);
             $table->text('keywords')->nullable();
+            $table->text('schedule')->nullable();
+            $table->decimal('price', 15, 2)->nullable();
+            $table->decimal('sale_price', 15, 2)->nullable();
+            $table->foreignId('departure_from')->nullable()->constrained('locations');
+            $table->foreignId('destination')->nullable()->constrained('locations');
+            $table->string('duration')->nullable();
+            $table->string('departure_date')->nullable();
+            $table->string('transportation')->nullable();
+            $table->string('attractions')->nullable();
+            $table->foreignId('tour_type')->nullable()->constrained('tour_types');
             $table->timestamps();
         });
     }

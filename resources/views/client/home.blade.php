@@ -10,7 +10,7 @@
         </div>
     </section>
     @include('layouts.temp')
-    <section class="intro-about mt-6 text-white bg-gradient-to-r from-red-800 from% via-zinc-600 via-100%">
+    {{-- <section class="intro-about mt-6 text-white bg-gradient-to-r from-red-800 from% via-zinc-600 via-100%">
         <div class="container mx-auto">
             <div class="over-intro-about py-10 ">
                 <div class="border content-intro-about text-center p-8 rounded-xl shadow-2xl md:w-4/5 mx-auto">
@@ -47,5 +47,5 @@
 
             </div>
         </div>
-    </section>
+    </section> --}}
 @endsection

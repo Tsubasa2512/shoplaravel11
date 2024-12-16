@@ -43,7 +43,7 @@
     </td>
     <td class="border  border-gray-300 p-1">{{ $item->updated_at }}</td>
     <td class="border  border-gray-300 p-1">
-        <a href ="{{ route('admin.article', ['menu' => $item->id]) }}" title="Access Article list"
+        <a href ="{{ route('admin.article', ['menu' => $item->slug]) }}" title="Access Article list"
             class="inline-block hover:opacity-70  hover:scale-125 ">
             <x-icons.arrow-right-circle class="size-7 w-7 h-7 fill-green-600" />
         </a>

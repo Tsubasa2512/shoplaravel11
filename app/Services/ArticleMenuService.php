@@ -44,7 +44,6 @@ class ArticleMenuService implements BaseServiceInterface
     public function update($id, array $data, $request = null)
     {
 
-        $articleMenu = $this->articleMenuRepository->findById($id);
         if (empty($data['parent_id'])) {
             $data['parent_id'] = $request->parent_id;
         }
@@ -52,32 +51,19 @@ class ArticleMenuService implements BaseServiceInterface
         $data['show'] = $data['show'] ?? 0;
         $data['featured'] = $data['featured'] ?? 0;
         $data['index_menu'] = $data['index_menu'] ?? 0;
-        if ($articleMenu) {
-            $articleMenu->name = $data["name"];
-            $articleMenu->slug = $data["slug"];
-            $articleMenu->category_id = $data["category_id"];
-            $articleMenu->index_menu = $data["index_menu"];
-            $articleMenu->parent_id = $data["parent_id"];
-            $articleMenu->description = $data["description"];
-            $articleMenu->show = $data["show"];
-            $articleMenu->featured = $data["featured"];
-
-            if ($request->hasFile("image") || (isset($data['no_image']) && $data['no_image'] == 'on')) {
-                if ($articleMenu->image) {
-                    $oldImagePath = public_path('storage/' . $articleMenu->image);
+        if ($request && $request->hasFile("image")) {
+            if (isset($data['image']) && $data['image']) {
+                if (!empty($request['image_old'])) {
+                    $oldImagePath = public_path('storage/' .   $request['image_old']);
                     if (file_exists($oldImagePath)) {
                         unlink($oldImagePath);
                     }
-                    $articleMenu->image = null;
-                }
-                if ($request->hasFile('image')) {
-                    $imagePath = $this->uploadImage($request->file('image'), $data['slug']);
-                    $articleMenu->image = $imagePath;
                 }
             }
-            return $articleMenu->save($data);
+            $data['image'] = $this->uploadImage($request->file('image'), $data['slug']);
         }
-        return;
+
+        return $this->articleMenuRepository->update($id, $data);
     }
 
     public function delete($id)

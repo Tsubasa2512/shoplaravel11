@@ -50,10 +50,19 @@ class ProductMenuController extends Controller
     }
     public function update(Request $request, $id)
     {
-        return view("admin.product_menu_edit");
+        $validated = $this->productMenuService->validateData($id, $request);
+        $updated = $this->productMenuService->update($id, $validated, $request);
+        if (!$updated) {
+            return redirect()->route('admin.product-menu')->with('error', 'Product Menu update failed');
+        }
+        return redirect()->route('admin.product-menu')->with('success', 'Product Menu update successfully');
     }
     public function delete($id)
     {
-        return view("admin.product_menu");
+        $checkDelete = $this->productMenuService->delete($id);
+        if (!$checkDelete) {
+            return redirect()->route('admin.product-menu')->with('error', 'Product Menu delete failed');
+        }
+        return redirect()->route('admin.product-menu')->with('success', 'Product Menu delete successfully');
     }
 }

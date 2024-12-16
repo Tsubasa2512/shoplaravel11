@@ -48,6 +48,7 @@
             <div class="box--data-admin flex mt-2 mb-4 text-lg  items-center">
                 <label class="w-40 font-semibold"></label>
                 <div class="show--image">
+                    <input type="hidden" name="image_old" value="{{ $category->image }}">
                     <p class="text-sm text-gray-500 mb-4">Current File: {{ $category->image }}</p>
                     <div class="p-3 shadow-lg w-fit rounded border border-sky-500">
                         <img src="{{ asset('storage/' . $category->image) }}" alt="Category Image"

@@ -10,7 +10,7 @@ use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\NewsletterController;
 use App\Http\Controllers\Admin\GeneralInformationController;
 use App\Http\Controllers\Admin\UserManagementController;
-use App\Http\Middleware\admin\BreadcrumbsMiddleware;
+use App\Http\Middleware\Admin\BreadcrumbsMiddleware;
 use App\Http\Controllers\Admin\CategoriesController;
 use App\Http\Controllers\Admin\ProductMenuController;
 // -----------------
@@ -56,7 +56,12 @@ Route::prefix('admin')
         Route::post('/product-menu/menu-update/{id}', [ProductMenuController::class, 'update'])->name('admin.product-menu.update');
         Route::delete('/product-menu/menu-delete/{id}', [ProductMenuController::class, 'delete'])->name('admin.product-menu.delete');
         //------------ Product --------------
-        Route::get('/product', [ProductController::class, 'index'])->name('admin.product');
+        Route::get('/product-menu/product', [ProductController::class, 'index'])->name('admin.product');
+        Route::get('/product-menu/product-add', [ProductController::class, 'create'])->name('admin.product.add');
+        Route::post('/product-menu/product-add', [ProductController::class, 'createProduct']);
+        Route::get('/product-menu/product-edit', [ProductController::class, 'edit'])->name('admin.product.edit');
+        Route::post('/product-menu/product-edit/{id}', [ProductController::class, 'update'])->name('admin.product.update');
+        Route::delete('/product-menu/product-delete/{id}', [ProductController::class, 'delete'])->name('admin.product.delete');
         //------------ Gallery --------------
         Route::get('/gallery', [GalleryController::class, 'index'])->name('admin.gallery');
         //------------ Order --------------

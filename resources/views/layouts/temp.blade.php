@@ -124,7 +124,7 @@
  {{-- Prominent location  --}}
  <section class="py-10">
      <div class="container mx-auto">
-        <div class="title--tour mb-6 flex  p-2 bg-zinc-900 text-white rounded uppercase">
+         <div class="title--tour mb-6 flex  p-2 bg-zinc-900 text-white rounded uppercase">
              <h2 class="w-fit font-semibold text-2xl font-serif">
                  <span>Điạ điểm nổi bật</span>
              </h2>
@@ -203,34 +203,42 @@
                          Hongkong</h3>
                  </a>
              </div>
-              {{-- item  --}}
-            <div class="items-prominent-location text-center p-2 w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 ">
-                <a href="#" title="demo" class="block overflow-hidden rounded-full relative group">
-                    <img src="/images/location9.jpg" alt="demo" class="w-full h-full group-hover:scale-110 ">
-                    <h3 class="absolute left-0 right-0 bottom-0 py-3 bg-zinc-900 text-white text-base font-bold font-serif opacity-90 mt-2 transition delay-400 group-hover:opacity-0">Bangkok</h3>
-                </a>
-            </div>
              {{-- item  --}}
              <div class="items-prominent-location text-center p-2 w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 ">
-                <a href="#" title="demo" class="block overflow-hidden rounded-full relative group">
-                    <img src="/images/location10.jpg" alt="demo" class="w-full h-full group-hover:scale-110 ">
-                    <h3 class="absolute left-0 right-0 bottom-0 py-3 bg-zinc-900 text-white text-base font-bold font-serif opacity-90 mt-2 transition delay-400 group-hover:opacity-0">China</h3>
-                </a>
-            </div>
+                 <a href="#" title="demo" class="block overflow-hidden rounded-full relative group">
+                     <img src="/images/location9.jpg" alt="demo" class="w-full h-full group-hover:scale-110 ">
+                     <h3
+                         class="absolute left-0 right-0 bottom-0 py-3 bg-zinc-900 text-white text-base font-bold font-serif opacity-90 mt-2 transition delay-400 group-hover:opacity-0">
+                         Bangkok</h3>
+                 </a>
+             </div>
              {{-- item  --}}
              <div class="items-prominent-location text-center p-2 w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 ">
-                <a href="#" title="demo" class="block overflow-hidden rounded-full relative group">
-                    <img src="/images/location11.jpg" alt="demo" class="w-full h-full group-hover:scale-110 ">
-                    <h3 class="absolute left-0 right-0 bottom-0 py-3 bg-zinc-900 text-white text-base font-bold font-serif opacity-90 mt-2 transition delay-400 group-hover:opacity-0">Macau</h3>
-                </a>
-            </div>
+                 <a href="#" title="demo" class="block overflow-hidden rounded-full relative group">
+                     <img src="/images/location10.jpg" alt="demo" class="w-full h-full group-hover:scale-110 ">
+                     <h3
+                         class="absolute left-0 right-0 bottom-0 py-3 bg-zinc-900 text-white text-base font-bold font-serif opacity-90 mt-2 transition delay-400 group-hover:opacity-0">
+                         China</h3>
+                 </a>
+             </div>
              {{-- item  --}}
              <div class="items-prominent-location text-center p-2 w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 ">
-                <a href="#" title="demo" class="block overflow-hidden rounded-full relative group">
-                    <img src="/images/location12.jpg" alt="demo" class="w-full h-full group-hover:scale-110 ">
-                    <h3 class="absolute left-0 right-0 bottom-0 py-3 bg-zinc-900 text-white text-base font-bold font-serif opacity-90 mt-2 transition delay-400 group-hover:opacity-0">Phuket</h3>
-                </a>
-            </div>
+                 <a href="#" title="demo" class="block overflow-hidden rounded-full relative group">
+                     <img src="/images/location11.jpg" alt="demo" class="w-full h-full group-hover:scale-110 ">
+                     <h3
+                         class="absolute left-0 right-0 bottom-0 py-3 bg-zinc-900 text-white text-base font-bold font-serif opacity-90 mt-2 transition delay-400 group-hover:opacity-0">
+                         Macau</h3>
+                 </a>
+             </div>
+             {{-- item  --}}
+             <div class="items-prominent-location text-center p-2 w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 ">
+                 <a href="#" title="demo" class="block overflow-hidden rounded-full relative group">
+                     <img src="/images/location12.jpg" alt="demo" class="w-full h-full group-hover:scale-110 ">
+                     <h3
+                         class="absolute left-0 right-0 bottom-0 py-3 bg-zinc-900 text-white text-base font-bold font-serif opacity-90 mt-2 transition delay-400 group-hover:opacity-0">
+                         Phuket</h3>
+                 </a>
+             </div>
          </div>
      </div>
  </section>

@@ -53,6 +53,7 @@
                 <div class="box--data-admin flex mt-2 mb-4 text-lg  items-center">
                     <label class="w-40 font-semibold"></label>
                     <div class="show--image">
+                        <input type="hidden" name="image_old" value="{{ $productMenu->image }}">
                         <p class="text-sm text-gray-500 mb-4">Current File: {{ $productMenu->image }}</p>
                         <div class="p-3 shadow-lg w-fit rounded border border-sky-500">
                             <img src="{{ asset('storage/' . $productMenu->image) }}" alt="Category Image"
@@ -95,10 +96,16 @@
                 <textarea name="description"
                     class="p-1 px-4 h-36 flex-1 shadow-lg rounded focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500">{{ $productMenu->description }}</textarea>
             </div>
-            <div class="box-btn--save">
+            <div class="box-btn--save flex mt-3">
                 <button
-                    class="w-fit flex place-items-center py-1 px-2 font-semibold text-zinc-50 bg-green-500  rounded hover:shadow-lg hover:shadow-green-300 hover:scale-95"
-                    type="submit">Add Data</button>
+                class="w-fit flex place-items-center py-1 px-2 font-semibold text-zinc-50 bg-green-500  rounded hover:shadow-lg hover:shadow-green-300 hover:scale-95"
+                type="submit">Update</button>
+            <button
+                class="w-fit flex place-items-center py-1 px-2  ml-3 font-semibold text-zinc-50 bg-blue-500  rounded hover:shadow-lg hover:shadow-blue-300 hover:scale-95"
+                type="reset">Refresh</button>
+            <a href="{{ route('admin.product-menu') }}" title="Product Menu"
+                class="w-fit flex place-items-center py-1 px-2  ml-3 font-semibold text-zinc-50 bg-yellow-500  rounded hover:shadow-lg hover:shadow-yellow-300 hover:scale-95"
+                type="button">Exit</a>
             </div>
         </form>
     </div>

@@ -16,7 +16,6 @@ class CategoryRepository implements BaseRepositoryInterface
 
     public function all()
     {
-        // return $this->category->all();
         return $this->category->orderBy("index_menu", "asc")->get();
     }
     public function findById($id)
@@ -29,7 +28,7 @@ class CategoryRepository implements BaseRepositoryInterface
     }
     public function update($id, array $data)
     {
-        $category = $this->category->findById($id);
+        $category = $this->findById($id);
         if ($category) {
             return $category->update($data);
         }
@@ -37,7 +36,7 @@ class CategoryRepository implements BaseRepositoryInterface
     }
     public function delete($id)
     {
-        $category = $this->category->findById($id);
+        $category = $this->findById($id);
         if ($category) {
             return $category->delete();
         }

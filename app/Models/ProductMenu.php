@@ -32,4 +32,9 @@ class ProductMenu extends Model
     {
         return $this->hasMany(ProductMenu::class, 'parent_id');
     }
+
+    public function products()
+{
+    return $this->hasMany(Product::class, 'menu_id');
+}
 }

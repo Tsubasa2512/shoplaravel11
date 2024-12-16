@@ -43,32 +43,18 @@ class CategoryService implements BaseServiceInterface
     {
         $data['show'] = $request->has('show') ? 1 : 0;
         $data['featured'] = $request->has('featured') ? 1 : 0;
-        $category = $this->categoryRepository->findById($id);
-        if ($category) {
-            $category->name = $data["name"];
-            $category->slug = $data["slug"];
-            $category->type_id = $data["type_id"];
-            $category->index_menu = $data["index_menu"];
-            $category->description = $data["description"];
-            $category->show = $data["show"];
-            $category->featured = $data["featured"];
-
-            if ($request->hasFile("image") || (isset($data['no_image']) && $data['no_image'] == 'on')) {
-                if ($category->image) {
-                    $oldImagePath = public_path('storage/' . $category->image);
+        if ($request && $request->hasFile("image")) {
+            if (isset($data['image']) && $data['image']) {
+                if (!empty($request['image_old'])) {
+                    $oldImagePath = public_path('storage/' .   $request['image_old']);
                     if (file_exists($oldImagePath)) {
                         unlink($oldImagePath);
                     }
-                    $category->image = null;
-                }
-                if ($request->hasFile('image')) {
-                    $imagePath = $this->uploadImage($request->file('image'), $data['slug']);
-                    $category->image = $imagePath;
                 }
             }
-            return $category->save($data);
+            $data['image'] = $this->uploadImage($request->file('image'), $data['slug']);
         }
-        return;
+        return $this->categoryRepository->update($id, $data);
     }
     public function delete($id)
     {

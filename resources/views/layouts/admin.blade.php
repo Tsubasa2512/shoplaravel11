@@ -12,7 +12,7 @@
     @vite('resources/js/admin/script.js')
 </head>
 
-<body class="bg-gray-100 font-serif leading-normal tracking-normal relative overflow-hidden">
+<body class="bg-gray-100 font-serif leading-normal tracking-normal relative overflow-x-hidden ">
     <div class="flex  md:flex-row">
         <!-- Sidebar -->
         <aside id="menu-admin"
