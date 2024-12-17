@@ -3,6 +3,9 @@
 @tailwind components;
 @tailwind utilities;
 
+body{
+    font-size: 14px;
+}
 
 /* Alert Admin  */
 .alert--admin{

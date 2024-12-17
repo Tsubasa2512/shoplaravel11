@@ -31,13 +31,14 @@ class ProductService implements BaseServiceInterface
 
     public function create(array $data, $request = null)
     {
+        $data['price'] = !empty($data['price']) ? (int) str_replace('.', '', $data['price']) : 0;
+        $data['sale_price'] = !empty($data['sale_price']) ? (int) str_replace('.', '', $data['sale_price']) : 0;
         $data['slug'] = $data['slug'] ?? SlugHelper::generateSlug($data['name'], 'products');
         if ($request && $request->hasFile('image')) {
-            $data['image'] = $this->uploadImage($request->file('image'), $data['slug']);
+            $data['image'] = $this->uploadImage($request->file('image'), slug: $data['slug']);
         }
         $data['show'] = $data['show'] ?? 0;
         $data['featured'] = $data['featured'] ?? 0;
-        $data['index_menu'] = $data['index_menu'] ?? 0;
         return $this->productRepository->create($data);
     }
 
@@ -60,13 +61,20 @@ class ProductService implements BaseServiceInterface
     {
         return $this->productRepository->getProductMenu();
     }
-    public function delete($id){
+    public function delete($id)
+    {
         return $this->productRepository->delete($id);
     }
-    public function getTourType(){
+    public function getTourType()
+    {
         return $this->productRepository->getTourType();
     }
-    public function getLocation(){
+    public function getDuration()
+    {
+        return $this->productRepository->getDuration();
+    }
+    public function getLocation()
+    {
         return $this->productRepository->getLocation();
     }
 }

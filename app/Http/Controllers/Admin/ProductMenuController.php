@@ -33,9 +33,9 @@ class ProductMenuController extends Controller
         $data = $request->all();
         $productMenu = $this->productMenuService->create($data, $request);
         if (!$productMenu) {
-            return redirect()->route("admin.product-menu")->with("error", "product Menu created failed");
+            return redirect()->route("admin.product-menu")->with("error", "Product Menu created failed");
         }
-        return redirect()->route("admin.product-menu")->with("success", "product Menu created successfully");
+        return redirect()->route("admin.product-menu")->with("success", "Product Menu created successfully");
     }
     public function edit(Request $request)
     {

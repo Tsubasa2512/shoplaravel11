@@ -33,10 +33,12 @@
                         <th class="border  border-gray-300 p-2">
                             <input type="checkbox" name="checkAll" id="checkAll" class="size-5 block m-auto">
                         </th>
-                        <th class="border  border-gray-300 p-2 w-36">Index Menu</th>
                         <th class="border  border-gray-300 p-2">Name</th>
                         <th class="border  border-gray-300 p-2">Image</th>
-                        <th class="border  border-gray-300 p-2">Type Product</th>
+                        <th class="border  border-gray-300 p-2">Menu Product</th>
+                        <th class="border  border-gray-300 p-2">Price</th>
+                        <th class="border  border-gray-300 p-2">Departure Date</th>
+                        <th class="border  border-gray-300 p-2">Type Tour</th>
                         <th class="border  border-gray-300 p-2">Status</th>
                         <th class="border  border-gray-300 p-2">Featured</th>
                         <th class="border  border-gray-300 p-2">Modified</th>

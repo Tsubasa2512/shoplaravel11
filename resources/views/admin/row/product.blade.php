@@ -2,7 +2,6 @@
     <td class="border  border-gray-300 p-1">
         <input type="checkbox" name="item_remove[]" value="{{ $item->id }}" class="size-5 block m-auto">
     </td>
-    <td class="border  border-gray-300 p-1 w-36 font-semibold ">{{ $item->index_menu }}</td>
     <td class="border  border-gray-300 p-1 px-2 text-left">{{ $item->name }}</td>
     <td class="border  border-gray-300 p-1">
         @if ($item->image)
@@ -11,7 +10,10 @@
             <x-icons.ban class="w-7 h-7 inline" />
         @endif
     </td>
-    <td class="border  border-gray-300 p-1">{{ $item->categoryType->type_name }}</td>
+    <td class="border  border-gray-300 p-1">{{ $item->productMenu->name }}</td>
+    <td class="border  border-gray-300 p-1">{{ $item->price }}</td>
+    <td class="border  border-gray-300 p-1">{{ $item->departure_date }}</td>
+    <td class="border  border-gray-300 p-1">{{ optional($item->tourType)->name }}</td>
     <td class="border  border-gray-300 p-1">
         @if ($item->show)
             <x-icons.eye class="w-6 h-6 text-green-600 inline -ml-3" />

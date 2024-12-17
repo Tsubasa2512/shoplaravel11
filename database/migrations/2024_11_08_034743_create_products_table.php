@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('image')->nullable();
             $table->string('name');
-            $table->text('description');
+            $table->text('description')->nullable();
             $table->string('slug')->unique();
             $table->foreignId('menu_id')->constrained('product_menus');
             $table->boolean('show')->default(true);
@@ -26,7 +26,7 @@ return new class extends Migration
             $table->decimal('sale_price', 15, 2)->nullable();
             $table->foreignId('departure_from')->nullable()->constrained('locations');
             $table->foreignId('destination')->nullable()->constrained('locations');
-            $table->string('duration')->nullable();
+            $table->foreignId('duration')->nullable()->constrained('durations');
             $table->string('departure_date')->nullable();
             $table->string('transportation')->nullable();
             $table->string('attractions')->nullable();

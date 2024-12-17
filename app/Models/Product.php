@@ -41,8 +41,12 @@ class Product extends Model
     {
         return $this->belongsTo(Locations::class, 'destination');
     }
-    public function tour_type()
+    public function tourType()
     {
         return $this->belongsTo(TourTypes::class, 'tour_type');
+    }
+    public function duration()
+    {
+        return $this->belongsTo(Durations::class, 'duration');
     }
 }

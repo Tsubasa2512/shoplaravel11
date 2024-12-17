@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Models\Durations;
 use App\Models\Locations;
 use App\Models\ProductMenu;
 use App\Models\Product;
@@ -50,16 +51,22 @@ class ProductRepository  implements BaseRepositoryInterface
         return false;
     }
     public function getProductMenu($menu_id = null)
-{
-    if ($menu_id) {
-        return ProductMenu::where('id', $menu_id)->first();
+    {
+        if ($menu_id) {
+            return ProductMenu::where('id', $menu_id)->first();
+        }
+        return ProductMenu::all();
     }
-    return ProductMenu::all();
-}
-    public function getTourType(){
+    public function getTourType()
+    {
         return TourTypes::all();
     }
-    public function getLocation(){
+    public function getDuration()
+    {
+        return Durations::all();
+    }
+    public function getLocation()
+    {
         return Locations::all();
     }
 }

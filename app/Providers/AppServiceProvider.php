@@ -23,7 +23,7 @@ class AppServiceProvider extends ServiceProvider
 
         //Cấu hình kế thừa từ BaseRepository [Contextual Binding] - tránh xung đột
         $this->app->when(UserService::class)->needs(BaseRepositoryInterface::class)->give(UserRepository::class);
-        $this->app->when(CategoryService::class)->needs(BaseRepositoryInterface::class)->give(CategoryRepository::class);
+        $this->app->when(concrete: CategoryService::class)->needs(BaseRepositoryInterface::class)->give(CategoryRepository::class);
     }
 
     /**
